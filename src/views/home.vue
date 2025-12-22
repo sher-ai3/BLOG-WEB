@@ -1,18 +1,39 @@
 <template>
-    <div>
-        <div class="relative">
-            <div class="top-0 right-0 left-0 p-5 mb-8">
-                <div class="flex gap-4 items-center">
-                    <el-input v-model="serach1" style="width: 240px" size="large" placeholder="Please Input"
-                        :suffix-icon="Search" />
+  <div class="relative h-screen overflow-hidden">
+    <!-- 视频背景 -->
+    <video
+      class="absolute inset-0 w-full h-full object-cover"
+      autoplay
+      muted
+      loop
+      playsinline
+    >
+      <source src="/14702213_1280_720_25fps.mp4" type="video/mp4" />
+    </video>
 
-                    <div>
-                        这里是列表
-                    </div>
-                    <div>
-                        <a href="https://github.com/sher-ai3" target="_blank">
-                            <svg class="w-6 h-6 text-gray-700 hover:text-black" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.262.82-.577
+    <!-- 遮罩 -->
+    <div class="absolute inset-0 bg-black/40 z-0"></div>
+
+    <!-- 顶部搜索和列表 -->
+    <div class="relative z-10 p-5 mb-8 flex gap-4 items-center">
+      <el-input
+        v-model="serach1"
+        style="width: 240px"
+        size="large"
+        placeholder="Please Input"
+        :suffix-icon="Search"
+      />
+
+      <div>这里是列表</div>
+
+      <a href="https://github.com/sher-ai3" target="_blank">
+        <svg
+          class="w-6 h-6 text-gray-200 hover:text-white"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+        >
+          <path
+            d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.262.82-.577
     0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61
     -.546-1.387-1.333-1.757-1.333-1.757
     -1.09-.745.083-.729.083-.729
@@ -33,39 +54,37 @@
     0 1.606-.015 2.898-.015 3.293
     0 .318.216.694.825.576
     C20.565 21.796 24 17.297 24 12
-    24 5.37 18.63 0 12 0z" />
-                            </svg>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-            <div data-aos="fade-zoom-in" class="">
-                <div class="w-100">
-                    这是asjdjska
-                </div>
-
-
-            </div>
-        </div>
+    24 5.37 18.63 0 12 0z"
+          />
+        </svg>
+      </a>
     </div>
+
+    <!-- 页面主要内容 -->
+    <div
+      class="relative z-10 flex justify-center items-center h-full"
+      data-aos="fade-zoom-in"
+    >
+      <div class="text-white text-4xl">这是asjdjska</div>
+    </div>
+  </div>
 </template>
 
 <script setup>
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+import { ref, onMounted, nextTick } from "vue"
+import AOS from "aos"
+import "aos/dist/aos.css"
+import { Search } from "@element-plus/icons-vue"
 
-import { ref, onMounted, nextTick } from 'vue'
-import { Search } from '@element-plus/icons-vue'
 const serach1 = ref("")
-onMounted(async () => {
-    await nextTick()
-    AOS.init({
-        duration: 800,
-        once: true
-    })
-})
 
+onMounted(async () => {
+  await nextTick()
+  AOS.init({
+    duration: 800,
+    once: true
+  })
+})
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>
