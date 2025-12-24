@@ -52,7 +52,7 @@
     <main ref="pageContent" class="relative z-20 bg-gray-50 min-h-screen px-6 py-20 rounded-t-[40px] shadow-2xl">
       <div class="max-w-7xl mx-auto">
         <el-row :gutter="24">
-          <el-col v-for="item in items" :key="item" :xs="24" :sm="12" :md="8" :lg="6">
+          <el-col v-for="item in post" :key="item.id" :xs="24" :sm="12" :md="8" :lg="6">
             <div 
               class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 mb-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               data-aos="fade-up"
@@ -60,7 +60,7 @@
               <div class="h-40 bg-gray-100 rounded-lg mb-4 flex items-center justify-center text-gray-400">
                 Card {{ item }}
               </div>
-              <h3 class="font-bold text-lg mb-2 text-gray-800">项目标题 {{ item }}</h3>
+              <h3 class="font-bold text-lg mb-2 text-gray-800">项目标题 {{ item.title }}</h3>
               <p class="text-gray-500 text-sm">这里是关于该项内容的简短描述文字。</p>
             </div>
           </el-col>
@@ -74,8 +74,9 @@
 import { ref, onMounted, onUnmounted, nextTick } from "vue"
 import AOS from "aos"
 import "aos/dist/aos.css"
+import post from "../data/post"
 
-const items = ref([1, 2, 3, 4, 5, 6, 7, 8])
+
 const videoRef = ref(null)
 const homeContent = ref(null)
 const pageContent = ref(null)
